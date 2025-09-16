@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import FormSection from "./components/FormSection";
+import AnswerSection from "./components/AnswerSection";
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+
+const App = () => {
+  const [storedValues, setStoredValues] = useState([]);
+
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+  console.log(apiKey);
+
+  const generateResponse = async (newQuestion, setNewQuestion) => {
+    try {
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "HTTP-Referer": "https://www.sitename.com",
+            "X-Title": "SiteName",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "deepseek/deepseek-r1:free",
+            messages: [{ role: "user", content: newQuestion }],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+
+      const answer =
+        data.choices?.[0]?.message?.content || "No response received.";
+
+      setStoredValues([
+        {
+          question: newQuestion,
+          answer,
+        },
+        ...storedValues,
+      ]);
+      setNewQuestion("");
+    } catch (error) {
+      console.error(error);
+      setStoredValues([
+        {
+          question: newQuestion,
+          answer: "Error: " + error.message,
+        },
+        ...storedValues,
+      ]);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen font-poppins bg-[#1D1E20] text-[#DADADB]">
+      <div className="max-w-[800px] py-6 mx-auto sm:max-w-full sm:px-5">
+        <div className="mb-8 text-center">
+          <h1 className="text-[2.7rem] font-bold">K Web Chatbot</h1>
+          {storedValues.length < 1 && (
+            <p className="text-base font-light mt-2">
+              I am an automated question-and-answer system. Ask me anything and
+              I’ll try to give you a reliable response.
+            </p>
+          )}
+        </div>
 
-export default App
+        <FormSection generateResponse={generateResponse} />
+
+        {storedValues.length > 0 && (
+          <AnswerSection storedValues={storedValues} />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default App;
