@@ -10,12 +10,12 @@ const AnswerSection = ({ storedValues }) => {
         {storedValues.map((value, index) => {
           return (
             <div className="relative my-8" key={index}>
-              <p className="bg-[#CA228C] p-5">{value.question}</p>
+              <p className="bg-sky-400 p-5 text-slate-900">{value.question}</p>
 
-              <p className="bg-[#343536] p-5">{value.answer}</p>
+              <p className="bg-[#343536] p-5 text-sky-50">{value.answer}</p>
 
               <div
-                className="absolute bg-black w-[50px] h-[50px] rounded-md flex justify-center items-center -bottom-2.5 -right-2.5 text-lg cursor-pointer transition-all duration-500 hover:bg-[#CA228C]"
+                className="absolute bg-black w-[50px] h-[50px] rounded-md flex justify-center items-center -bottom-2.5 -right-2.5 text-lg cursor-pointer transition-all duration-500 hover:bg-sky-400"
                 onClick={() => copyText(value.answer)}
               >
                 <i className="fa-solid fa-copy"></i>
