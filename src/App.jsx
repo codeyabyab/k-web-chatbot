@@ -5,11 +5,13 @@ import { useState } from "react";
 
 const App = () => {
   const [storedValues, setStoredValues] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
   console.log(apiKey);
 
   const generateResponse = async (newQuestion, setNewQuestion) => {
+    setLoading(true);
     try {
       const response = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -51,6 +53,8 @@ const App = () => {
         },
         ...storedValues,
       ]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,7 +73,13 @@ const App = () => {
 
         <FormSection generateResponse={generateResponse} />
 
-        {storedValues.length > 0 && (
+        {loading && (
+          <div className="flex justify-center items-center my-4 animate-pulse">
+            <div className="w-6 h-6 border-4 border-sky-400 border-t-white rounded-full animate-spin" />
+          </div>
+        )}
+
+        {!loading && storedValues.length > 0 && (
           <AnswerSection storedValues={storedValues} />
         )}
       </div>
