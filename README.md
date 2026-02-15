@@ -1,19 +1,22 @@
 # K Web Chatbot
 
-A simple web chatbot using OpenRouter's DeepSeek R1 API
+A personal side-project featuring a web chatbot that uses OpenRouter's DeepSeek R1 API.
 
----
 
 ## Features
 
-- Generates automated and reliable responses to user prompts
-- Supports conversational interaction through a straightforward UI
+- Generates automated and reliable responses to user prompts.
+- Supports conversational interaction through a straightforward UI.
 
----
 
 ## Tech Stack
 
-- **Language/Framework:**  React, Node.js
-- **Tools/Libraries:** Tailwind, OpenRouter, DeepSeek R1, FontAwesome
+**Frontend:**  
+- React
+- Tailwind CSS
+- FontAwesome 
 
+**Backend:**
+- Node.js
+- OpenRouter API (DeepSeek R1 model) 
 
