@@ -27,7 +27,7 @@ const App = () => {
             model: "deepseek/deepseek-r1:free",
             messages: [{ role: "user", content: newQuestion }],
           }),
-        }
+        },
       );
 
       const data = await response.json();
@@ -59,31 +59,33 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen font-poppins bg-[#1D1E20] text-[#DADADB]">
-      <div className="max-w-[800px] py-6 mx-auto sm:max-w-full sm:px-5">
-        <div className="mb-8 text-center">
-          <h1 className="text-[2.7rem] font-bold">K Web Chatbot</h1>
-          {storedValues.length < 1 && (
-            <p className="text-base font-light mt-2">
-              I am an automated question-and-answer system. Ask me anything and
-              I’ll try to give you a reliable response.
-            </p>
+    <>
+      <div className="min-h-screen font-poppins bg-[#1D1E20] text-[#DADADB]">
+        <div className="max-w-[800px] py-6 mx-auto sm:max-w-full sm:px-5">
+          <div className="mb-8 text-center">
+            <h1 className="text-[2.7rem] font-bold">K Web Chatbot</h1>
+            {storedValues.length < 1 && (
+              <p className="text-base font-light mt-2">
+                I am an automated question-and-answer system. Ask me anything
+                and I’ll try to give you a reliable response.
+              </p>
+            )}
+          </div>
+
+          <FormSection generateResponse={generateResponse} />
+
+          {loading && (
+            <div className="flex justify-center items-center my-4 animate-pulse">
+              <div className="w-6 h-6 border-4 border-sky-400 border-t-white rounded-full animate-spin" />
+            </div>
+          )}
+
+          {!loading && storedValues.length > 0 && (
+            <AnswerSection storedValues={storedValues} />
           )}
         </div>
-
-        <FormSection generateResponse={generateResponse} />
-
-        {loading && (
-          <div className="flex justify-center items-center my-4 animate-pulse">
-            <div className="w-6 h-6 border-4 border-sky-400 border-t-white rounded-full animate-spin" />
-          </div>
-        )}
-
-        {!loading && storedValues.length > 0 && (
-          <AnswerSection storedValues={storedValues} />
-        )}
       </div>
-    </div>
+    </>
   );
 };
 
