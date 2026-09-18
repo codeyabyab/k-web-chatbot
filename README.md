@@ -15,6 +15,7 @@ A side-project that features a chatbot inside a web application that uses OpenRo
 
 **Backend**
 - OpenRouter API (DeepSeek R1 model)
+- Globals
 
 **Build Tools**
 - Node.js / npm
