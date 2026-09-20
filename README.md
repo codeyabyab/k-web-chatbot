@@ -25,7 +25,7 @@ A side-project that features a chatbot inside a web application that uses OpenRo
 - Vercel
 
 ## Reflection
-I wanted to try and create a chatbot of my own since it is the trending technology nowadays, thanks to AI. Regardless, it was a pleasant surprise on how simple it is to develop thanks to existing APIs.
+I wanted to try and create a chatbot of my own since it is one of the projects usually seen in a portfolio with latest technology. Regardless, it was a pleasant surprise on how simple it is to develop thanks to existing APIs. It is a little bit clunky due to limitations place by the free version of the LLM but I'm happy with it.
 
 ## License
 This project is licensed under the MIT License.
