@@ -1,4 +1,8 @@
+import { useChatbot } from "./hooks/useChatbot";
+
 function App() {
+  const { storedValues, loading, generateResponse } = useChatbot();
+
   return (
     <>
       <div className="min-h-screen bg-[#1d1e20] text-[#dadadb]">
@@ -10,8 +14,6 @@ function App() {
               give you a reliable response
             </p>
           </div>
-
-          
         </div>
       </div>
     </>
