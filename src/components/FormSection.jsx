@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function FormSection({ generateResponse }) {
   const [newQuestion, setNewQuestion] = useState("");
 
