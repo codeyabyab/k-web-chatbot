@@ -1,5 +1,9 @@
 import { useChatbot } from "./hooks/useChatbot";
 
+import FormSection from "./components/FormSection";
+import AnswerSection from "./components/AnswerSection";
+
+
 function App() {
   const { storedValues, loading, generateResponse } = useChatbot();
 
@@ -9,11 +13,21 @@ function App() {
         <div className="max-w-[800px] py-6 mx-auto sm:max-w-full sm:px-5">
           <div className="mb-8 text-center">
             <h1 className="text-[2.7rem] font-bold">K Web Chatbot</h1>
-            <p className="text-base font-light mt-2">
-              I am an automated question-and-answer system. Ask and I'll try to
-              give you a reliable response
-            </p>
+            {storedValues.length < 1 && (
+              <p className="text-base font-light mt-2">
+                I am an automated question-and-answer system. Ask and I'll try
+                to give you a reliable response
+              </p>
+            )}
           </div>
+
+          <FormSection generateResponse={generateResponse} />
+
+          {loading && <p>Loading...</p>}
+
+          {!loading && storedValues.length > 0 && (
+            <AnswerSection storedValues={storedValues}/>
+          )}
         </div>
       </div>
     </>
