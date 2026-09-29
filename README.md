@@ -18,7 +18,7 @@ A side-project that features a chatbot inside a web application that uses OpenRo
 - Globals
 
 **Build Tools**
-- Node.js / npm
+- Node.js 24
 - Vite
 
 **Deployment**
