@@ -2,6 +2,7 @@ import { useChatbot } from "./hooks/useChatbot";
 
 import FormSection from "./components/FormSection";
 import AnswerSection from "./components/AnswerSection";
+import Loader from "./components/misc/Loader"
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
           <FormSection generateResponse={generateResponse} />
 
-          {loading && <p>Loading...</p>}
+          {loading && <Loader/>}
 
           {!loading && storedValues.length > 0 && (
             <AnswerSection storedValues={storedValues}/>
