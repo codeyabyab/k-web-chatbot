@@ -8,13 +8,13 @@ function FormSection({ generateResponse }) {
       <div className="my-8">
         <textarea
           rows="5"
-          className="w-full rounded-md border-none p-5 text-base font-poppins outline-none bg-stone-700 text-sky-50 transition-all duration-500 focus:border-l-[5px] focus:border-t-[5px] focus:border-sky-500 focus:rounded-tl-none focus:rounded-tr-none focus:rounded-bl-none mb-5"
+          className="w-full rounded-md border-0 p-5 text-base outline-none bg-stone-700 text-sky-50 transition-all duration-200 focus:border-l-[5px] focus:border-t-[5px] focus:border-sky-500 mb-5"
           placeholder="Ask me about anything..."
           value={newQuestion}
           onChange={(e) => setNewQuestion(e.target.value)}
         ></textarea>
         <button
-          className="w-full rounded-md bg-zinc-900 text-sky-50 py-5 text-lg font-medium cursor-pointer transition-all duration-500 hover:border-l-[5px] hover:border-t-[5px] hover:border-sky-500 hover:rounded-tl-none hover:rounded-tr-none hover:rounded-bl-none"
+          className="w-full rounded-md bg-zinc-900 text-sky-50 py-5 text-lg font-medium cursor-pointer transition-all duration-200 hover:border-t-[5px] hover:border-l-[5px] hover:border-sky-500"
           onClick={() => generateResponse(newQuestion, setNewQuestion)}
         >
           Submit Query
