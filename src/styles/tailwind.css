@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-mono;
+}
