@@ -19,7 +19,7 @@ function App() {
     <>
       <div className="flex h-dvh flex-col bg-zinc-800 text-zinc-300">
         <header className="border-b border-zinc-700 px-5 py-3 text-center">
-          <h1 className="text-xl font-bold tracking-wide">K Web Chatbot</h1>
+          <h1 className="text-xl font-bold tracking-wide text-sky-500">K Web Chatbot</h1>
         </header>
 
         <main className="flex-1 overflow-y-auto" aria-live="polite">
