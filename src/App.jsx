@@ -26,7 +26,7 @@ function App() {
           <div className="mx-auto w-full max-w-[800px] px-5 py-6">
             {isEmpty ? (
               <div className="py-16 text-center">
-                <h2 className="text-[2.2rem] font-bold">
+                <h2 className="text-3xl font-bold italic">
                   What can I help with?
                 </h2>
                 <p className="mt-2 text-base font-light text-zinc-400">
