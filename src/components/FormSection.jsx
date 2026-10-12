@@ -47,18 +47,7 @@ function FormSection({ generateResponse, disabled = false }) {
             aria-label="Send question"
             className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-lg bg-sky-600 text-white transition-colors duration-200 hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 disabled:cursor-not-allowed disabled:bg-zinc-900 disabled:text-zinc-500"
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M12 19V5M5 12l7-7 7 7" />
-            </svg>
+            <span className="material-symbols-sharp text-[22px]" aria-hidden="true">arrow_upward</span>
           </button>
         </div>
 
