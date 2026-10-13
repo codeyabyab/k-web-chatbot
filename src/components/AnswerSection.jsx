@@ -1,27 +1,31 @@
+import { useState } from "react";
+
 function AnswerSection({ storedValues }) {
-  const copyText = (text) => {
-    navigator.clipboard.writeText(text);
+  const [copiedIndex, setCopiedIndex] = useState(null);
+
+  const copyText = async (text, index) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedIndex(index);
+      setTimeoutt(() => setCopiedIndex(null), 1500);
+    } catch {}
   };
 
   return (
     <>
-      <hr className="my-16 border border-stone-700"></hr>
-      <div className="space-y-8">
-        {storedValues.map((value, index) => {
-          return (
-            <div className="relative my-8" key={index}>
-              <p className="bg-sky-500 p-5 text-slate-900">{value.question}</p>
-              <p className="bg-stone-700 p-5 text-sky-50">{value.answer}</p>
-
-              <div
-                className="absolute bg-black w-[50px] h-[50px] rounded-md flex justify-center items-center -bottom-2.5 -right-2.5 text-lg cursor-pointer transition-all duration-500 hover:bg-sky-500"
-                onClick={() => copyText(value.answer)}
-              >
-                <i className="fa-solid fa-copy"></i>
-              </div>
+      <div className="space-y-6">
+        {/* User question */}
+        {storedValues.map((value, index) => (
+          <div className="group flex justify-end">
+            <div className="max-w-[85%]">
+              <p className="whitespace-pre-wrap rounded-2xl rounded-bl-sm bg-stone-700 px-4 py-3 text-slate-900">
+                {value.question}
+              </p>
             </div>
-          );
-        })}
+
+            {/* Bot answer */}
+          </div>
+        ))}
       </div>
     </>
   );
