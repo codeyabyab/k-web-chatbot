@@ -1,7 +1,7 @@
 import { useChatbot } from "./hooks/useChatbot";
 
 import FormSection from "./components/FormSection";
-import AnswerSection from "./components/AnswerSection";
+import ResponseSection from "./components/ResponseSection";
 import Loader from "./components/misc/Loader";
 import { useEffect, useRef } from "react";
 
@@ -35,7 +35,7 @@ function App() {
                 </p>
               </div>
             ) : (
-              <AnswerSection storedValues={storedValues} />
+              <ResponseSection storedValues={storedValues} />
             )}
 
             {loading && <Loader />}
