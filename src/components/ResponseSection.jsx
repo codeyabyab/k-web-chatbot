@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AnswerSection({ storedValues }) {
+function ResponseSection({ storedValues }) {
   const [copiedIndex, setCopiedIndex] = useState(null);
 
   const copyText = async (text, index) => {
@@ -52,4 +52,4 @@ function AnswerSection({ storedValues }) {
   );
 }
 
-export default AnswerSection;
+export default ResponseSection;
