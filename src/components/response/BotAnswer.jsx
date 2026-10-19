@@ -15,14 +15,14 @@ function BotAnswer({ text }) {
     <>
       <div className="group flex justify-start">
         <div className="max-w-[85%]">
-          <p className="whitespace-pre-wrap rounded-2xl rounded-bl-sm bg-stone-700 px-4 py-3 text-sky-50">
+          <p className="bot-answer-text">
             {text}
           </p>
           <button
             type="button"
             onClick={copyText}
             aria-label={copied ? "Copied" : "Copy answer"}
-            className="mt-1 flex cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-xs text-zinc-400 transition-colors duration-200 hover:bg-zinc-700 hover:text-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+            className="bot-answer-button"
           >
             <span
               className="material-symbols-sharp text-[16px]"
