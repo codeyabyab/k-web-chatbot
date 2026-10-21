@@ -51,7 +51,7 @@ function FormSection({ generateResponse, disabled = false }) {
           </button>
         </div>
 
-        <p className="mt-2.5 hidden text-center text-xs text-zinc-400 sm:block">
+        <p className="mt-2.5 mb-1.5 hidden text-center text-xs text-zinc-400 sm:block">
           Enter to send. Shift+Enter for a new line
         </p>
       </div>
