@@ -7,7 +7,7 @@ export const useChatbot = () => {
   const [storedValues, setStoredValues] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const apikey = import.meta.env.VITE_OPENROUTER_API_KEY;
+  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
 
   const generateResponse = async (newQuestion, setNewQuestion) => {
     setLoading(true);
