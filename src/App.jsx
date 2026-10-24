@@ -1,9 +1,10 @@
-import { useChatbot } from "./hooks/useChatbot";
+import { useEffect, useRef } from "react";
 
 import FormSection from "./components/FormSection";
 import ResponseSection from "./components/ResponseSection";
 import Loader from "./components/misc/Loader";
-import { useEffect, useRef } from "react";
+
+import { useChatbot } from "./hooks/useChatbot";
 
 function App() {
   const { storedValues, loading, generateResponse } = useChatbot();
