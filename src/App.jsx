@@ -30,6 +30,7 @@ function App() {
                 <h2 className="text-3xl font-bold italic">
                   What can I help you with?
                 </h2>
+                <div className="mt-4 mb-4 max-w h-1 bg-sky-500 rounded-full"></div>
                 <p className="mt-2 text-base font-light text-zinc-400">
                   I am an automated question and answer system using DeepSeek R1 as my model from OpenRouter. Ask and I'll give you a reliable response to the best of my abilities. 
                 </p>
