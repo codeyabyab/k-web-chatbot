@@ -44,7 +44,7 @@ function App() {
           </div>
         </main>
 
-        <footer className="border-t border-zinc-700 px-5 pb-[max(1rem,env(safe-are-inset-bottom)) pt-3]">
+        <footer className="border-t border-zinc-700 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
           <div className="mx-auto max-w-[800px]">
             <FormSection generateResponse={generateResponse} disabled={loading}/>
           </div>
