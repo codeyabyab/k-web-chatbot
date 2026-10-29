@@ -5,8 +5,8 @@ function ResponseSection({ storedValues }) {
   return (
     <>
       <div className="space-y-6">
-        {storedValues.map((value, index) => (
-          <div key={index} className="space-y-3">
+        {storedValues.map((value) => (
+          <div key={value.id} className="space-y-3">
             {/* User question */}
             <UserQuestion text={value.question} />
             {/* Bot answer */}
