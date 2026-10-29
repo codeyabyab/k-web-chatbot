@@ -34,11 +34,18 @@ export const useChatbot = () => {
       const data = await response.json();
       const answer = data.choices?.[0]?.message.content || "No response";
 
-      setStoredValues((prev) => [{ question: newQuestion, answer }, ...prev]);
+      setStoredValues((prev) => [
+        { id: crypto.randomUUID(), question: newQuestion, answer },
+        ...prev,
+      ]);
       setNewQuestion("");
     } catch (error) {
       setStoredValues((prev) => [
-        { question: newQuestion, answer: "Error: " + error.message },
+        {
+          id: crypto.randomUUID(),
+          question: newQuestion,
+          answer: "Error: " + error.message,
+        },
         ...prev,
       ]);
     } finally {
