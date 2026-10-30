@@ -7,7 +7,7 @@ import Loader from "./components/misc/Loader";
 import { useChatbot } from "./hooks/useChatbot";
 
 function App() {
-  const { storedValues, loading, generateResponse } = useChatbot();
+  const { storedValues, loading, generateResponse, clearChat } = useChatbot();
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -19,8 +19,21 @@ function App() {
   return (
     <>
       <div className="flex h-dvh flex-col bg-zinc-800 text-zinc-300">
-        <header className="border-b border-zinc-700 px-5 py-3 text-center">
+        <header className="relative border-b border-zinc-700 px-5 py-3 text-center">
           <h1 className="text-xl font-bold tracking-wide text-sky-500">K Web Chatbot</h1>
+
+          <button
+          type="button"
+          onClick={clearChat}
+          disabled={isEmpty || loading}
+          aria-label="Start a new chat"
+          title="New chat"
+          className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center gap-1 rounded-lg px-2.5 py-1.5 text-sm text-zinc-400 transition-colors hover:bg-zinc-700 hover:text-sky-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent disabled:hover:text-zinc-400"
+          >
+            <span className="material-symbols-sharp text-[20px]" aria-hidden="true">edit_square</span>
+            <span className="hidden sm:inline">New chat</span>
+
+          </button>
         </header>
 
         <main className="flex-1 overflow-y-auto" aria-live="polite">
