@@ -53,5 +53,7 @@ export const useChatbot = () => {
     }
   };
 
-  return { storedValues, loading, generateResponse };
+  const clearChat = () => setStoredValues([])
+
+  return { storedValues, loading, generateResponse, clearChat };
 };
