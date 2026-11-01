@@ -20,19 +20,25 @@ function App() {
     <>
       <div className="flex h-dvh flex-col bg-zinc-800 text-zinc-300">
         <header className="relative border-b border-zinc-700 px-5 py-3 text-center">
-          <h1 className="text-xl font-bold tracking-wide text-sky-500">K Web Chatbot</h1>
+          <h1 className="text-xl font-bold tracking-wide text-sky-500">
+            K Web Chatbot
+          </h1>
 
           <button
-          type="button"
-          onClick={clearChat}
-          disabled={isEmpty || loading}
-          aria-label="Start a new chat"
-          title="New chat"
-          className="clear-chat-button"
+            type="button"
+            onClick={clearChat}
+            disabled={isEmpty || loading}
+            aria-label="Start a new chat"
+            title="New chat"
+            className="button absolute right-4 top-1/2 -translate-y-1/2 px-2.5 py-1.5 text-sm hover:text-sky-500 disabled:opacity-40"
           >
-            <span className="material-symbols-sharp text-[20px]" aria-hidden="true">edit_square</span>
+            <span
+              className="material-symbols-sharp text-[20px]"
+              aria-hidden="true"
+            >
+              edit_square
+            </span>
             <span className="hidden sm:inline">New chat</span>
-
           </button>
         </header>
 
@@ -45,7 +51,9 @@ function App() {
                 </h2>
                 <div className="mt-4 mb-4 max-w h-1 bg-sky-500 rounded-full"></div>
                 <p className="mt-2 text-base font-light text-zinc-400">
-                  I am an automated question and answer system using DeepSeek R1 as my model from OpenRouter. Ask and I'll give you a reliable response to the best of my abilities. 
+                  I am an automated question and answer system using DeepSeek R1
+                  as my model from OpenRouter. Ask and I'll give you a reliable
+                  response to the best of my abilities.
                 </p>
               </div>
             ) : (
@@ -59,7 +67,10 @@ function App() {
 
         <footer className="border-t border-zinc-700 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
           <div className="mx-auto max-w-[800px]">
-            <FormSection generateResponse={generateResponse} disabled={loading}/>
+            <FormSection
+              generateResponse={generateResponse}
+              disabled={loading}
+            />
           </div>
         </footer>
       </div>
