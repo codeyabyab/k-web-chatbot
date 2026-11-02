@@ -22,7 +22,7 @@ function BotAnswer({ text }) {
             type="button"
             onClick={copyText}
             aria-label={copied ? "Copied" : "Copy answer"}
-            className="bot-answer-button"
+            className="button mt-1 rounded-md px-2 py-1 text-xs hover:text-sky-50"
           >
             <span
               className="material-symbols-sharp text-[16px]"
