@@ -45,7 +45,7 @@ function FormSection({ generateResponse, disabled = false }) {
             onClick={submit}
             disabled={!canSubmit}
             aria-label="Send question"
-            className="form-button"
+            className="button h-11 w-11 shrink-0 justify-center bg-sky-600 text-white hover:bg-sky-500 focus-visible:ring-sky-300 disabled:bg-zinc-900 disabled:text-zinc-500"
           >
             <span className="material-symbols-sharp text-[22px]" aria-hidden="true">arrow_upward</span>
           </button>
