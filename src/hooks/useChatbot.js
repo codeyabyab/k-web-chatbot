@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
 const MODEL = "deepseek/deepseek-r1:free";
@@ -6,15 +6,21 @@ const MODEL = "deepseek/deepseek-r1:free";
 export const useChatbot = () => {
   const [storedValues, setStoredValues] = useState([]);
   const [loading, setLoading] = useState(false);
+  const abortRef = useRef(null);
 
   const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
 
+  useEffect(() => () => abortRef.current?.abort(), []);
+
   const generateResponse = async (newQuestion, setNewQuestion) => {
+    const controller = new AbortController();
+    abortRef.current = controller;
     setLoading(true);
 
     try {
       const response = await fetch(OPENROUTER_URL, {
         method: "POST",
+        signal: controller.signal,
         headers: {
           Authorization: `Bearer ${apiKey}`,
           "HTTP-Referer": "https://k-web-chatbot.vercel.app",
@@ -40,6 +46,10 @@ export const useChatbot = () => {
       ]);
       setNewQuestion("");
     } catch (error) {
+      if (error.name === "AbortError") {
+        return;
+      }
+
       setStoredValues((prev) => [
         {
           id: crypto.randomUUID(),
@@ -49,11 +59,16 @@ export const useChatbot = () => {
         ...prev,
       ]);
     } finally {
+      if (abortRef.current === controller) {
+        abortRef.current = null;
+      }
       setLoading(false);
     }
   };
 
-  const clearChat = () => setStoredValues([])
+  const stopGenerating = () => abortRef.current?.abort();
 
-  return { storedValues, loading, generateResponse, clearChat };
+  const clearChat = () => setStoredValues([]);
+
+  return { storedValues, loading, generateResponse, stopGenerating, clearChat };
 };
