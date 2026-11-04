@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function FormSection({ generateResponse, disabled = false }) {
+function FormSection({ generateResponse, onStop, disabled = false }) {
   const [newQuestion, setNewQuestion] = useState("");
   const textareaRef = useRef(null);
 
@@ -40,15 +40,37 @@ function FormSection({ generateResponse, disabled = false }) {
             onKeyDown={handleKeyDown}
           />
 
-          <button
-            type="button"
-            onClick={submit}
-            disabled={!canSubmit}
-            aria-label="Send question"
-            className="button h-11 w-11 shrink-0 justify-center bg-sky-600 text-white hover:bg-sky-500 focus-visible:ring-sky-300 disabled:bg-zinc-900 disabled:text-zinc-500"
-          >
-            <span className="material-symbols-sharp text-[22px]" aria-hidden="true">arrow_upward</span>
-          </button>
+          {disabled ? (
+            <button
+              type="button"
+              onClick={onStop}
+              aria-label="Stop generating"
+              title="Stop generating"
+              className="button h-11 w-11 shrink-0 justify-center bg-sky-600 text-white hover:bg-sky-500 focus-visible:ring-sky-300 "
+            >
+              <span
+                className="material-symbols-sharp text-[22px]"
+                aria-hidden="true"
+              >
+                stop
+              </span>
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={submit}
+              disabled={!canSubmit}
+              aria-label="Send question"
+              className="button h-11 w-11 shrink-0 justify-center bg-sky-600 text-white hover:bg-sky-500 focus-visible:ring-sky-300 disabled:bg-zinc-900 disabled:text-zinc-500"
+            >
+              <span
+                className="material-symbols-sharp text-[22px]"
+                aria-hidden="true"
+              >
+                arrow_upward
+              </span>
+            </button>
+          )}
         </div>
 
         <p className="mt-2.5 mb-1.5 hidden text-center text-xs text-zinc-400 sm:block">
