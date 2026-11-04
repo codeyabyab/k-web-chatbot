@@ -7,7 +7,7 @@ import Loader from "./components/misc/Loader";
 import { useChatbot } from "./hooks/useChatbot";
 
 function App() {
-  const { storedValues, loading, generateResponse, clearChat } = useChatbot();
+  const { storedValues, loading, generateResponse, stopGenerating, clearChat } = useChatbot();
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -69,6 +69,7 @@ function App() {
           <div className="mx-auto max-w-[800px]">
             <FormSection
               generateResponse={generateResponse}
+              onStop={stopGenerating}
               disabled={loading}
             />
           </div>
